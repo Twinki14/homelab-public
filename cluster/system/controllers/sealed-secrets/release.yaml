@@ -3,7 +3,7 @@ kind: HelmRelease
 metadata:
   name: sealed-secrets
 spec:
-  interval: 30m
+  interval: 6h
   chart:
     spec:
       chart: sealed-secrets

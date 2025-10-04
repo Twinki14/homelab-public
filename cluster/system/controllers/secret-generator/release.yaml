@@ -3,7 +3,7 @@ kind: HelmRelease
 metadata:
   name: kubernetes-secret-generator
 spec:
-  interval: 30m
+  interval: 6h
   chart:
     spec:
       chart: kubernetes-secret-generator

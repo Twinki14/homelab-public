@@ -3,11 +3,14 @@ kind: HelmRelease
 metadata:
   name: external-dns
 spec:
-  interval: 12h
-  chartRef:
-    kind: OCIRepository
-    name: external-dns
+  interval: 6h
+  chart:
+    spec:
+      chart: external-dns
+      version: "1.x"
+      sourceRef:
+        kind: HelmRepository
+        name: external-dns-repo
+      interval: 12h
   # https://github.com/bitnami/charts/blob/main/bitnami/external-dns/values.yaml
   values:
-    metrics:
-      enabled: false
