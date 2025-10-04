@@ -75,7 +75,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: miha
-              key: token
+              key: discord-token
         - name: DOTNET_DISCORD__GUILD
           valueFrom:
             secretKeyRef:
