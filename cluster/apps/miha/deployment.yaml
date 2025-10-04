@@ -26,9 +26,6 @@ spec:
         - /usr/lib/redis/modules/rejson.so
         - --loadmodule
         - /usr/lib/redis/modules/redisearch.so
-        volumeMounts:
-        - name: redis
-          mountPath: /data
         resources:
           requests:
             cpu: 250m
