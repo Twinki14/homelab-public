@@ -5,4 +5,4 @@ metadata:
 
 resources:
 - deployment.yaml
-- secret-sealed.yaml
+- sealed-secret.yaml
