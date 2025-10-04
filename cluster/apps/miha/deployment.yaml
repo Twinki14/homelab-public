@@ -28,7 +28,7 @@ spec:
         - /usr/lib/redis/modules/redisearch.so
         resources:
           requests:
-            cpu: 250m
+            cpu: 25m
             memory: 256Mi
           limits:
             cpu: 250m
@@ -53,7 +53,7 @@ spec:
         image: ghcr.io/twinki14/miha:0.3.7 # {"$imagepolicy": "flux-system:miha-latest"}
         resources:
           requests:
-            cpu: 250m
+            cpu: 25m
             memory: 512Mi
           limits:
             cpu: 250m
