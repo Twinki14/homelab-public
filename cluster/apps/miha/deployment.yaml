@@ -16,16 +16,10 @@ spec:
     spec:
       containers:
       - name: redis
-        image: redislabs/redismod:latest
-        args:
-        - --appendonly
-        - 'yes'
-        - --maxmemory
-        - 256Mb
-        - --loadmodule
-        - /usr/lib/redis/modules/rejson.so
-        - --loadmodule
-        - /usr/lib/redis/modules/redisearch.so
+        image: redis/redis-stack
+        env:
+        - name: REDIS_ARGS
+          value: --appendonly yes --maxmemory 256Mb
         resources:
           requests:
             cpu: 25m
@@ -35,6 +29,7 @@ spec:
             memory: 256Mi
         ports:
         - containerPort: 6379
+        - containerPort: 8001
         readinessProbe:
           exec:
             command:
