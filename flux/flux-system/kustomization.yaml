@@ -3,3 +3,59 @@ kind: Kustomization
 resources:
 - gotk-components.yaml
 - gotk-sync.yaml
+patches:
+- patch: |
+    - op: add
+      path: /spec/template/spec/containers/0/args/-
+      value: --requeue-dependency=5s
+  target:
+    kind: Deployment
+    name: "(kustomize-controller|source-controller|helm-controller)"
+- patch: |
+    - op: replace
+      path: /spec/template/spec/containers/0/resources
+      value:
+        requests:
+          cpu: 10m
+          memory: 219Mi
+        limits:
+          memory: 219Mi
+  target:
+    kind: Deployment
+    name: "(helm-controller)"
+- patch: |
+    - op: replace
+      path: /spec/template/spec/containers/0/resources
+      value:
+        requests:
+          cpu: 10m
+          memory: 100Mi
+        limits:
+          memory: 100Mi
+  target:
+    kind: Deployment
+    name: "(notification-controller|image-automation-controller)"
+- patch: |
+    - op: replace
+      path: /spec/template/spec/containers/0/resources
+      value:
+        requests:
+          cpu: 280m
+          memory: 100Mi
+        limits:
+          memory: 100Mi
+  target:
+    kind: Deployment
+    name: "(image-reflector-controller)"
+- patch: |
+    - op: replace
+      path: /spec/template/spec/containers/0/resources
+      value:
+        requests:
+          cpu: 10m
+          memory: 195Mi
+        limits:
+          memory: 195Mi
+  target:
+    kind: Deployment
+    name: "(kustomize-controller|source-controller)"
